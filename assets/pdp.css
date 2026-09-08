@@ -1,0 +1,17 @@
+:root {
+	--pdp-cream: #f4f3ee;
+	--pdp-dark: #3a3a28;
+	--pdp-green: #a4c93d;
+	--pdp-text: #1a1a1a;
+	--pdp-max: 1440px;
+	--pdp-gutter: clamp(16px, 5vw, 80px);
+}
+.pdp h1,
+.pdp h2,
+.pdp h3 {
+	font-family: var(--font-recoleta);
+	font-weight: 400;
+}
+.pdp .rte ul {
+	padding-left: 1.1em;
+}
