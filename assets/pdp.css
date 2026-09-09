@@ -1,17 +1,53 @@
 :root {
+	--pdp-text: #31331e;
+	--pdp-dark: #31331e;
 	--pdp-cream: #f4f3ee;
-	--pdp-dark: #3a3a28;
-	--pdp-green: #a4c93d;
-	--pdp-text: #1a1a1a;
+	--pdp-btn: #a8ca1b;
+	--pdp-green: #56814c;
+	--pdp-green-row: #7aa66f;
+	--pdp-success: #2aac11;
+	--pdp-alert: #ff3030;
+	--pdp-alert-soft: #ff8181;
+	--pdp-white: #ffffff;
+
+	--font-heading: "Recoleta", Georgia, serif;
+	--font-body: "Figtree", system-ui, sans-serif;
+
 	--pdp-max: 1440px;
 	--pdp-gutter: clamp(16px, 5vw, 80px);
 }
+
+.pdp {
+	font-family: var(--font-body);
+	color: var(--pdp-text);
+	line-height: 1.11;
+}
 .pdp h1,
 .pdp h2,
-.pdp h3 {
-	font-family: var(--font-recoleta);
+.pdp h3,
+.pdp h4 {
+	font-family: var(--font-heading);
 	font-weight: 400;
+	line-height: 1.2;
+}
+.pdp h1 {
+	font-size: 64px;
+}
+.pdp h2 {
+	font-size: 48px;
+}
+.pdp h3 {
+	font-size: 36px;
+}
+.pdp h4 {
+	font-size: 24px;
 }
 .pdp .rte ul {
 	padding-left: 1.1em;
+}
+@media (max-width: 749px) {
+	.pdp h1,
+	.pdp h2 {
+		font-size: 24px;
+	}
 }
