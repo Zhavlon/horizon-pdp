@@ -3,7 +3,7 @@
     <p class="pdp-features__title">{{ block.settings.heading }}</p>
   {% endif %}
   <ul class="pdp-features__grid">
-    {% for f in product.metafields.custom.features.value %}
+    {% for f in closest.product.metafields.custom.features.value %}
       <li class="pdp-features__item">
         {% if f.icon.value -%}
           <img src="{{ f.icon.value | image_url: width: 64 }}" alt="" width="28" height="28" loading="lazy">
@@ -47,6 +47,7 @@
 {% schema %}
 {
   "name": "PDP Features",
-  "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "Why you need this?" }]
+  "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "Why you need this?" }],
+  "presets": [{ "name": "PDP Features" }]
 }
 {% endschema %}

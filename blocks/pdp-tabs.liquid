@@ -1,7 +1,7 @@
 <div class="pdp-tabs" {{ block.shopify_attributes }}>
   <details class="pdp-tab" open>
     <summary>Description</summary>
-    <div class="rte">{{ product.description }}</div>
+    <div class="rte">{{ closest.product.description }}</div>
   </details>
   {% if block.settings.who != blank %}
     <details class="pdp-tab">
@@ -68,6 +68,7 @@
       "label": "Care Instructions",
       "default": "<p>To maintain conductivity and extend the life of your grounding sheet:</p><ul><li>Wash on gentle cycle with mild detergent</li><li>Avoid bleach, fabric softeners, or dryer sheets</li><li>Air dry when possible, or tumble dry on low</li><li>Do not dry clean</li><li>Wash regularly to remove body oils that can affect performance</li></ul>"
     }
-  ]
+  ],
+  "presets": [{ "name": "PDP Tabs" }]
 }
 {% endschema %}
