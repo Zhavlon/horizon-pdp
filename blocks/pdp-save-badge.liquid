@@ -1,0 +1,25 @@
+{%- liquid
+  assign product = closest.product
+  assign price = product.selected_or_first_available_variant.price
+  assign compare = product.selected_or_first_available_variant.compare_at_price
+  assign has_discount = false
+  if compare and compare > price
+    assign has_discount = true
+    assign diff = compare | minus: price | times: 100.0
+    assign pct = diff | divided_by: compare | round
+  endif
+-%}
+
+{%- if has_discount -%}
+  <span class="pdp-save-badge" {{ block.shopify_attributes }}>
+    {{- 'Save %' | append: pct | append: ' OFF' -}}
+  </span>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "PDP Save Badge",
+  "settings": [],
+  "presets": [{ "name": "PDP Save Badge" }]
+}
+{% endschema %}

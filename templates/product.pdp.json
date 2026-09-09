@@ -116,27 +116,80 @@
               },
               "blocks": {}
             },
-            "price_gYQcVf": {
-              "type": "price",
+            "group_ztaUNN": {
+              "type": "group",
+              "name": "t:names.group",
               "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "paragraph",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "text_color": "",
-                "padding-block-start": 4,
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "price_kbafAR": {
+                  "type": "price",
+                  "name": "t:names.product_price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "text_color": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "pdp_save_badge_NRwxHP": {
+                  "type": "pdp-save-badge",
+                  "name": "PDP Save Badge",
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "price_kbafAR",
+                "pdp_save_badge_NRwxHP"
+              ]
             },
             "pdp_features_R7FRxr": {
               "type": "pdp-features",
@@ -237,7 +290,7 @@
             "text_Eqhegy",
             "pdp_badges_APaQDQ",
             "ai_gen_block_6e21c40_HaDiEr",
-            "price_gYQcVf",
+            "group_ztaUNN",
             "pdp_features_R7FRxr",
             "buy_buttons_eYQEYi",
             "pdp_avatars_E87HUX",
@@ -251,7 +304,7 @@
         "equal_columns": true,
         "limit_details_width": false,
         "gap": 44,
-        "enable_sticky_add_to_cart": true,
+        "enable_sticky_add_to_cart": false,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -263,33 +316,37 @@
         "item_8AfMwt": {
           "type": "item",
           "settings": {
+            "icon": "shopify://shop_images/ShieldCheck.svg",
             "text": "90-Day Results-Backed Guarantee"
+          }
+        },
+        "item_xjeGpW": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/united-states-america_702250_1.svg",
+            "text": "Designed in USA"
+          }
+        },
+        "item_PzjYDp": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/Package.svg",
+            "text": "Ships in 2–6 Days"
           }
         },
         "item_8gDVNC": {
           "type": "item",
           "settings": {
-            "text": "90-Day Results-Backed Guarantee"
-          }
-        },
-        "item_TTxGiF": {
-          "type": "item",
-          "settings": {
-            "text": "90-Day Results-Backed Guarantee"
-          }
-        },
-        "item_qewE43": {
-          "type": "item",
-          "settings": {
-            "text": "90-Day Results-Backed Guarantee"
+            "icon": "shopify://shop_images/Tree.svg",
+            "text": "A Tree Planted per Order"
           }
         }
       },
       "block_order": [
         "item_8AfMwt",
-        "item_8gDVNC",
-        "item_TTxGiF",
-        "item_qewE43"
+        "item_xjeGpW",
+        "item_PzjYDp",
+        "item_8gDVNC"
       ],
       "name": "PDP · Trust bar",
       "settings": {}
@@ -297,12 +354,38 @@
     "pdp_body_systems_Uw3Pf4": {
       "type": "pdp-body-systems",
       "blocks": {
-        "system_hjCYaQ": {
+        "system_EwdPQY": {
           "type": "system",
           "settings": {
             "name": "Neurological & Mental Health",
-            "intro": "",
-            "conditions": "",
+            "tab_icon": "shopify://shop_images/Neurology--Streamline-Sharp-Material-Symbols_1.svg",
+            "image": "shopify://shop_images/Rectangle_40141_2.png",
+            "intro": "Grounding helps calm and stabilize the nervous system, supporting those dealing with:",
+            "conditions": "<ul><li>Migraines & headaches</li><li>Neuropathy & brain fog</li><li>Anxiety, depression & mood swings</li><li>ADHD & focus issues</li><li>Insomnia & disrupted sleep</li></ul>",
+            "link_text": "Explore the science behind these benefits",
+            "link_url": ""
+          }
+        },
+        "system_hjCYaQ": {
+          "type": "system",
+          "settings": {
+            "name": "Musculoskeletal Pain & Inflammation",
+            "tab_icon": "shopify://shop_images/Rheumatology--Streamline-Sharp-Material-Symbols_1.svg",
+            "image": "shopify://shop_images/Rectangle_40141_1.png",
+            "intro": "By reducing chronic inflammation, grounding can offer relief from:",
+            "conditions": "<ul><li>Arthritis (RA & OA)</li><li>Fibromyalgia</li><li>Joint, back & neck pain</li><li>Chronic fatigue syndrome</li><li>Post-exercise soreness</li></ul>",
+            "link_text": "Explore the science behind these benefits",
+            "link_url": ""
+          }
+        },
+        "system_9iFFxr": {
+          "type": "system",
+          "settings": {
+            "name": "Cardiovascular & Circulatory Health",
+            "tab_icon": "shopify://shop_images/Hematology--Streamline-Sharp-Material-Symbols_1.svg",
+            "image": "shopify://shop_images/Rectangle_40141.png",
+            "intro": "Grounding supports healthy blood flow and thermal regulation. Ideal for those managing:",
+            "conditions": "<ul><li>Poor circulation</li><li>High blood pressure</li><li>Swollen legs & feet</li><li>Varicose veins</li><li>Cold extremities</li></ul>",
             "link_text": "Explore the science behind these benefits",
             "link_url": ""
           }
@@ -310,9 +393,11 @@
         "system_pH4r7P": {
           "type": "system",
           "settings": {
-            "name": "Neurological & Mental Health",
-            "intro": "",
-            "conditions": "",
+            "name": "Immune & Inflammatory Conditions",
+            "tab_icon": "shopify://shop_images/Blur-Off--Streamline-Sharp-Material-Symbols_1.svg",
+            "image": "shopify://shop_images/Rectangle_40141_3.png",
+            "intro": "By calming the body’s inflammatory response, grounding may support conditions like:",
+            "conditions": "<ul><li>Autoimmune flare-ups (Lupus, MS, RA)</li><li>Allergies & asthma</li><li>Inflammation-related skin issues</li></ul>",
             "link_text": "Explore the science behind these benefits",
             "link_url": ""
           }
@@ -320,9 +405,11 @@
         "system_Y9qzic": {
           "type": "system",
           "settings": {
-            "name": "Neurological & Mental Health",
-            "intro": "",
-            "conditions": "",
+            "name": "Hormonal & Metabolic Balance",
+            "tab_icon": "shopify://shop_images/Genetics--Streamline-Sharp-Material-Symbols_1.svg",
+            "image": "shopify://shop_images/Rectangle_40141_4.png",
+            "intro": "Grounding helps support hormone and metabolic regulation. Particularly helpful for:",
+            "conditions": "<ul><li>Menopause & perimenopause</li><li>PCOS & irregular cycles</li><li>Thyroid imbalance</li><li>Insulin resistance & blood sugar issues</li></ul>",
             "link_text": "Explore the science behind these benefits",
             "link_url": ""
           }
@@ -330,41 +417,23 @@
         "system_zGrezX": {
           "type": "system",
           "settings": {
-            "name": "Neurological & Mental Health",
-            "intro": "",
-            "conditions": "",
-            "link_text": "Explore the science behind these benefits",
-            "link_url": ""
-          }
-        },
-        "system_XPEGb3": {
-          "type": "system",
-          "settings": {
-            "name": "Neurological & Mental Health",
-            "intro": "",
-            "conditions": "",
-            "link_text": "Explore the science behind these benefits",
-            "link_url": ""
-          }
-        },
-        "system_kJHVCN": {
-          "type": "system",
-          "settings": {
-            "name": "Neurological & Mental Health",
-            "intro": "",
-            "conditions": "",
+            "name": "Specialized Support",
+            "tab_icon": "shopify://shop_images/Cardiology--Streamline-Sharp-Material-Symbols_1.svg",
+            "image": "shopify://shop_images/Rectangle_40141_5.png",
+            "intro": "A daily grounding practice can also support:",
+            "conditions": "<ul><li>Injury & post-surgery recovery</li><li>Pregnancy support (with doctor approval)</li><li>Jet lag & circadian disruption</li><li>Skin health (eczema, psoriasis)</li><li>Athletic performance & muscle recovery</li></ul>",
             "link_text": "Explore the science behind these benefits",
             "link_url": ""
           }
         }
       },
       "block_order": [
+        "system_EwdPQY",
         "system_hjCYaQ",
+        "system_9iFFxr",
         "system_pH4r7P",
         "system_Y9qzic",
-        "system_zGrezX",
-        "system_XPEGb3",
-        "system_kJHVCN"
+        "system_zGrezX"
       ],
       "name": "PDP · Body systems",
       "settings": {
@@ -376,66 +445,71 @@
     "pdp_comparison_NYmMp9": {
       "type": "pdp-comparison",
       "blocks": {
-        "row_wfYKM3": {
-          "type": "row",
-          "settings": {
-            "solution": "Sleeping Pills",
-            "how_it_works": "",
-            "what_to_consider": "",
-            "cost_over_time": "",
-            "side_effects": "",
-            "highlighted": false
-          }
-        },
         "row_cqrRHG": {
           "type": "row",
           "settings": {
-            "solution": "Sleeping Pills",
-            "how_it_works": "",
-            "what_to_consider": "",
-            "cost_over_time": "",
-            "side_effects": "",
-            "highlighted": false
+            "solution": "Terra Therapy",
+            "icon": "shopify://shop_images/freepik__candid-photography-with-natural-textures-and-highl__97877_1.png",
+            "how_it_works": "Reconnects body to Earth's natural charge to reduce inflammation and improve sleep",
+            "what_to_consider": "Requires grounded outlet and direct skin contact for best results",
+            "cost_over_time": "One-time purchase",
+            "side_effects": "None - 100% safe, drug-free",
+            "highlighted": true
           }
         },
         "row_pCJAzt": {
           "type": "row",
           "settings": {
             "solution": "Sleeping Pills",
-            "how_it_works": "",
-            "what_to_consider": "",
-            "cost_over_time": "",
-            "side_effects": "",
+            "icon": "shopify://shop_images/freepik__create-a-floating-white-bottle-with-the-label-writ__33421_1.png",
+            "how_it_works": "Sedate the brain with sleep-inducing chemicals",
+            "what_to_consider": "Tolerance builds, grogginess, not long-term safe",
+            "cost_over_time": "Ongoing",
+            "side_effects": "Dependency & side effects",
+            "highlighted": false
+          }
+        },
+        "row_3JBNUK": {
+          "type": "row",
+          "settings": {
+            "solution": "Pain Meds",
+            "icon": "shopify://shop_images/freepik__candid-photography-with-natural-textures-and-highl__33422_1.png",
+            "how_it_works": "Block pain signals temporarily",
+            "what_to_consider": "Doesn't treat root cause, side effects common",
+            "cost_over_time": "High if chronic",
+            "side_effects": "Risk of addiction or long-term damage",
             "highlighted": false
           }
         },
         "row_aTdBVd": {
           "type": "row",
           "settings": {
-            "solution": "Sleeping Pills",
-            "how_it_works": "",
-            "what_to_consider": "",
-            "cost_over_time": "",
-            "side_effects": "",
+            "solution": "Chiropractor",
+            "icon": "shopify://shop_images/freepik__candid-photography-with-natural-textures-and-highl__33423_1.png",
+            "how_it_works": "Manual realignment of joints/spine",
+            "what_to_consider": "Frequent visits needed, temporary relief",
+            "cost_over_time": "High recurring cost",
+            "side_effects": "Not suitable for every condition",
             "highlighted": false
           }
         },
         "row_GdQ4jd": {
           "type": "row",
           "settings": {
-            "solution": "Sleeping Pills",
-            "how_it_works": "",
-            "what_to_consider": "",
-            "cost_over_time": "",
-            "side_effects": "",
+            "solution": "Supplements",
+            "icon": "shopify://shop_images/freepik__candid-photography-with-natural-textures-and-highl__33425_1.png",
+            "how_it_works": "Target isolated symptoms like melatonin or blue light",
+            "what_to_consider": "Vary in effectiveness, often don't address the root",
+            "cost_over_time": "Ongoing",
+            "side_effects": "Often unproven or inconsistent",
             "highlighted": false
           }
         }
       },
       "block_order": [
-        "row_wfYKM3",
         "row_cqrRHG",
         "row_pCJAzt",
+        "row_3JBNUK",
         "row_aTdBVd",
         "row_GdQ4jd"
       ],

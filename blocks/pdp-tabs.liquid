@@ -1,51 +1,90 @@
-<div class="pdp-tabs" {{ block.shopify_attributes }}>
-  <details class="pdp-tab" open>
-    <summary>Description</summary>
-    <div class="rte">{{ closest.product.description }}</div>
-  </details>
-  {% if block.settings.who != blank %}
-    <details class="pdp-tab">
-      <summary>Who is it for?</summary>
-      <div class="rte">{{ block.settings.who }}</div>
-    </details>
-  {% endif %}
-  {% if block.settings.shipping != blank %}
-    <details class="pdp-tab">
-      <summary>Shipping and returns</summary>
-      <div class="rte">{{ block.settings.shipping }}</div>
-    </details>
-  {% endif %}
-  {% if block.settings.care != blank %}
-    <details class="pdp-tab">
-      <summary>Care Instructions</summary>
-      <div class="rte">{{ block.settings.care }}</div>
-    </details>
-  {% endif %}
+{%- liquid
+  assign product = closest.product
+-%}
+
+<div class="pdp-tabs" data-pdp-tabs {{ block.shopify_attributes }}>
+  {%- comment -%} Stepper-style tab nav {%- endcomment -%}
+  <div class="pdp-tabs__nav" role="tablist">
+    <button class="pdp-tabs__navbtn is-active" data-tab="desc" role="tab" type="button">
+      <span class="pdp-tabs__label">Description</span>
+      <span class="pdp-tabs__ind"></span>
+    </button>
+    <button class="pdp-tabs__navbtn" data-tab="who" role="tab" type="button">
+      <span class="pdp-tabs__label">Who is it for?</span>
+      <span class="pdp-tabs__ind"></span>
+    </button>
+    <button class="pdp-tabs__navbtn" data-tab="ship" role="tab" type="button">
+      <span class="pdp-tabs__label">Shipping and returns</span>
+      <span class="pdp-tabs__ind"></span>
+    </button>
+    <button class="pdp-tabs__navbtn" data-tab="care" role="tab" type="button">
+      <span class="pdp-tabs__label">Care Instructions</span>
+      <span class="pdp-tabs__ind"></span>
+    </button>
+  </div>
+
+  {%- comment -%} Panels (each has its own mobile header) {%- endcomment -%}
+  <div class="pdp-tabs__panels">
+    <div class="pdp-tabs__panel is-active" data-panel="desc">
+      <button class="pdp-tabs__head" type="button">Description</button>
+      <div class="pdp-tabs__body rte">{{ product.description }}</div>
+    </div>
+
+    <div class="pdp-tabs__panel" data-panel="who">
+      <button class="pdp-tabs__head" type="button">Who is it for?</button>
+      <div class="pdp-tabs__body rte">{{ block.settings.who }}</div>
+    </div>
+
+    <div class="pdp-tabs__panel" data-panel="ship">
+      <button class="pdp-tabs__head" type="button">Shipping and returns</button>
+      <div class="pdp-tabs__body rte">{{ block.settings.shipping }}</div>
+    </div>
+
+    <div class="pdp-tabs__panel" data-panel="care">
+      <button class="pdp-tabs__head" type="button">Care Instructions</button>
+      <div class="pdp-tabs__body rte">{{ block.settings.care }}</div>
+    </div>
+  </div>
 </div>
-{% stylesheet %}
-  .pdp-tab {
-    border-top: 1px solid #e3e0d8;
-    padding: 16px 0;
-  }
-  .pdp-tab summary {
-    cursor: pointer;
-    list-style: none;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-  }
-  .pdp-tab summary::after {
-    content: '+';
-  }
-  .pdp-tab[open] summary::after {
-    content: '–';
-  }
-  .pdp-tab .rte {
-    padding-top: 12px;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-{% endstylesheet %}
+
+<script>
+  (function () {
+    function initTabs(root) {
+      if (root.dataset.tabsInit) return;
+      root.dataset.tabsInit = '1';
+
+      var navBtns = root.querySelectorAll('.pdp-tabs__navbtn');
+      var panels = root.querySelectorAll('.pdp-tabs__panel');
+      var mq = window.matchMedia('(min-width: 750px)');
+
+      // Desktop: nav button switches the active panel
+      navBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var key = btn.dataset.tab;
+          navBtns.forEach(function (b) {
+            b.classList.toggle('is-active', b === btn);
+          });
+          panels.forEach(function (p) {
+            p.classList.toggle('is-active', p.dataset.panel === key);
+          });
+        });
+      });
+
+      // Mobile: panel header toggles that panel (accordion)
+      panels.forEach(function (p) {
+        var head = p.querySelector('.pdp-tabs__head');
+        if (!head) return;
+        head.addEventListener('click', function () {
+          if (mq.matches) return; // desktop uses the nav row
+          p.classList.toggle('is-open');
+        });
+      });
+    }
+
+    document.querySelectorAll('[data-pdp-tabs]').forEach(initTabs);
+  })();
+</script>
+
 {% schema %}
 {
   "name": "PDP Tabs",

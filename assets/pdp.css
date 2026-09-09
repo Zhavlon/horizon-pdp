@@ -1,3 +1,6 @@
+/* ============================================================
+   PDP — Design tokens
+   ============================================================ */
 :root {
 	--pdp-text: #31331e;
 	--pdp-dark: #31331e;
@@ -11,12 +14,15 @@
 	--pdp-white: #ffffff;
 
 	--font-heading: "Recoleta", Georgia, serif;
-	--font-body: "Figtree", system-ui, sans-serif;
+	--font-body: "Recoleta", Georgia, serif;
 
 	--pdp-max: 1440px;
 	--pdp-gutter: clamp(16px, 5vw, 80px);
 }
 
+/* ============================================================
+   Base typography (custom .pdp sections)
+   ============================================================ */
 .pdp {
 	font-family: var(--font-body);
 	color: var(--pdp-text);
@@ -42,9 +48,11 @@
 .pdp h4 {
 	font-size: 24px;
 }
+
 .pdp .rte ul {
 	padding-left: 1.1em;
 }
+
 @media (max-width: 749px) {
 	.pdp h1,
 	.pdp h2 {
@@ -52,6 +60,9 @@
 	}
 }
 
+/* ============================================================
+   Buy-box — font overrides for the native product block
+   ============================================================ */
 .product-details :is(h1, h2, h3),
 .pdp-avatars__title {
 	font-family: "Recoleta", Georgia, serif !important;
@@ -63,13 +74,16 @@
 .pdp-features,
 .pdp-tabs,
 .pdp-avatars {
-	font-family: "Figtree", system-ui, sans-serif;
+	font-family: "Recoleta", Georgia, serif;
 }
 .product-details h1 {
 	font-size: clamp(32px, 3.6vw, 48px);
 	line-height: 1.1;
 }
 
+/* ============================================================
+   Buy-box — Add to cart button
+   ============================================================ */
 .product-details .add-to-cart-button,
 .product-details button[name="add"] {
 	background: var(--pdp-btn) !important;
@@ -78,19 +92,202 @@
 	font-family: "Recoleta", serif;
 	font-size: 22px;
 	padding-block: 20px;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
 }
-
+/* Hide the cart icon inside the ATC button */
+.product-details .add-to-cart-button .svg-wrapper {
+	display: none;
+}
+/* Hide the dynamic checkout (Shop Pay etc.) button */
 .product-details .shopify-payment-button {
 	display: none;
 }
 
+/* ============================================================
+   Buy-box — Price + Save badge row
+   ============================================================ */
+/* Put Price and Save badge on one centered row (inside a Group block) */
+.product-details .group-block-content:has(> .pdp-save-badge) {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+/* Price order: struck-through compare price first, then current price */
+.product-details [ref="priceContainer"] {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+}
 .product-details .compare-at-price {
+	order: -1;
 	color: var(--pdp-alert);
 	text-decoration: line-through;
 }
 
-.pdp-avatars__img {
+/* Green "Save %XX OFF" pill */
+.pdp-save-badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 12px;
+	border-radius: 999px;
+	background: var(--pdp-green);
+	color: #fff;
+	font-family: var(--font-body);
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+}
+
+/* ============================================================
+   PDP Tabs — stepper nav on desktop, accordion on mobile
+   ============================================================ */
+.pdp-tabs__nav {
+	display: flex;
+	gap: 18px;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 32px;
+}
+.pdp-tabs__navbtn {
+	appearance: none;
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+.pdp-tabs__label {
+	font-family: var(--font-body);
+	font-size: 20px;
+	line-height: 1;
+	color: rgba(49, 51, 30, 0.45);
+	white-space: nowrap;
+	transition: color 0.15s;
+}
+.pdp-tabs__navbtn.is-active .pdp-tabs__label {
+	color: var(--pdp-text);
+	font-weight: 500;
+}
+/* Indicators removed */
+.pdp-tabs__ind {
+	display: none;
+}
+.pdp-tabs__navbtn.is-active .pdp-tabs__ind::after {
+	display: none;
+}
+
+/* Panels: only the active one is shown on desktop */
+.pdp-tabs__panel {
+	display: none;
+}
+.pdp-tabs__panel.is-active {
+	display: block;
+}
+.pdp-tabs__head {
+	display: none;
+} /* mobile accordion header */
+.pdp-tabs__body {
+	font-family: var(--font-body);
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--pdp-text);
+}
+.pdp-tabs__body ul {
+	padding-left: 1.2em;
+	list-style: disc;
+}
+.pdp-tabs__body li {
+	margin: 4px 0;
+}
+
+/* ============================================================
+   Trust bar — force light text + white icons over base .pdp
+   ============================================================ */
+.pdp.pdp-trust,
+.pdp.pdp-trust .pdp-trust__item,
+.pdp.pdp-trust .pdp-trust__item span {
+	color: #fff;
+}
+/* brightness(0) makes any icon black, invert(1) flips it to pure white */
+.pdp.pdp-trust .pdp-trust__item img {
+	filter: brightness(0) invert(1);
+}
+
+/* ============================================================
+   Avatars (Real people) — match Figma: compact, light ring
+   ============================================================ */
+.pdp-avatars__row {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.pdp-avatars .pdp-avatars__img {
+	width: 64px;
+	height: 64px;
+	flex: 0 0 auto;
+	padding: 0;
+	border: none; /* kill the theme's black button border */
+	outline: none;
+	background: none;
+	border-radius: 50%;
+	overflow: hidden;
+	cursor: pointer;
 	box-shadow:
 		0 0 0 2px #fff,
-		0 0 0 3px #e3e0d8;
+		0 0 0 3px #000; /* subtle double ring */
+}
+.pdp-avatars .pdp-avatars__img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	border-radius: 50%;
+}
+/* Mobile: collapse into an accordion */
+@media (max-width: 749px) {
+	.pdp-tabs__nav {
+		display: none;
+	}
+
+	.pdp-tabs__panel {
+		display: block;
+		border-bottom: 1px solid rgba(49, 51, 30, 0.15);
+	}
+	.pdp-tabs__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		appearance: none;
+		background: none;
+		border: none;
+		padding: 16px 0;
+		font-family: var(--font-body);
+		font-size: 16px;
+		font-weight: 600;
+		color: var(--pdp-text);
+		cursor: pointer;
+		text-align: left;
+	}
+	.pdp-tabs__head::after {
+		content: "+";
+		font-size: 22px;
+		font-weight: 400;
+		line-height: 1;
+	}
+	.pdp-tabs__panel.is-open .pdp-tabs__head::after {
+		content: "–";
+	}
+
+	.pdp-tabs__body {
+		display: none;
+		padding: 0 0 16px;
+	}
+	.pdp-tabs__panel.is-open .pdp-tabs__body {
+		display: block;
+	}
 }
