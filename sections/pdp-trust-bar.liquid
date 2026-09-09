@@ -1,0 +1,63 @@
+<div class="pdp pdp-trust">
+  <div class="pdp-trust__inner">
+    {% for block in section.blocks %}
+      <div class="pdp-trust__item" {{ block.shopify_attributes }}>
+        {% if block.settings.icon -%}
+          <img src="{{ block.settings.icon | image_url: width: 48 }}" alt="" width="24" height="24">
+        {%- endif %}
+        <span>{{ block.settings.text }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% stylesheet %}
+  .pdp-trust {
+    background: var(--pdp-dark);
+    color: #fff;
+  }
+  .pdp-trust__inner {
+    max-width: var(--pdp-max);
+    margin-inline: auto;
+    padding: 18px var(--pdp-gutter);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .pdp-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+  }
+  .pdp-trust__item img {
+    filter: invert(1);
+  }
+  @media (max-width: 749px) {
+    .pdp-trust__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "PDP · Trust bar",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "text", "label": "Text", "default": "90-Day Results-Backed Guarantee" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP · Trust bar",
+      "blocks": [{ "type": "item" }, { "type": "item" }, { "type": "item" }, { "type": "item" }]
+    }
+  ]
+}
+{% endschema %}

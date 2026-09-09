@@ -1,0 +1,141 @@
+<div class="pdp pdp-cmp">
+  <div class="pdp-cmp__inner">
+    <h2 class="pdp-cmp__title">{{ section.settings.heading }}</h2>
+
+    <div class="pdp-cmp__scroll">
+      <table class="pdp-cmp__table">
+        <thead>
+          <tr>
+            <th>Solution</th>
+            <th>How it works</th>
+            <th>What to consider</th>
+            <th>Cost over time</th>
+            <th>Side effects</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for block in section.blocks %}
+            <tr class="{% if block.settings.highlighted %}is-highlight{% endif %}" {{ block.shopify_attributes }}>
+              <td class="pdp-cmp__sol">
+                {% if block.settings.icon -%}
+                  <img src="{{ block.settings.icon | image_url: width: 80 }}" alt="" width="40" height="40">
+                {%- endif %}
+                <span>{{ block.settings.solution }}</span>
+              </td>
+              <td>{{ block.settings.how_it_works }}</td>
+              <td>{{ block.settings.what_to_consider }}</td>
+              <td>{{ block.settings.cost_over_time }}</td>
+              <td>{{ block.settings.side_effects }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if section.settings.show_button %}
+      <div class="pdp-cmp__cta">
+        <a href="{{ product.url | default: '#' }}" class="pdp-cmp__btn" data-add-to-cart>
+          {{- section.settings.button_label -}}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% stylesheet %}
+  .pdp-cmp {
+    background: var(--pdp-cream);
+  }
+  .pdp-cmp__inner {
+    max-width: 1274px;
+    margin-inline: auto;
+    padding: 0 var(--pdp-gutter) 80px;
+  }
+  .pdp-cmp__title {
+    text-align: center;
+    font-size: 64px;
+    line-height: 1.2;
+    margin: 0 0 32px;
+  }
+  .pdp-cmp__scroll {
+    overflow-x: auto;
+  }
+  .pdp-cmp__table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .pdp-cmp__table th {
+    text-align: left;
+    font-weight: 700;
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+  .pdp-cmp__table td {
+    padding: 18px 20px;
+    font-size: 14px;
+    line-height: 1.45;
+    border-top: 1px solid #eee;
+    vertical-align: top;
+  }
+  .pdp-cmp__sol {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 700;
+  }
+  .pdp-cmp__table tr.is-highlight td {
+    background: var(--pdp-green-row);
+    color: #fff;
+  }
+  .pdp-cmp__cta {
+    text-align: center;
+    margin-top: 32px;
+  }
+  .pdp-cmp__btn {
+    display: inline-block;
+    background: var(--pdp-btn);
+    color: var(--pdp-text);
+    font-weight: 700;
+    padding: 18px 60px;
+    border-radius: 999px;
+  }
+  @media (max-width: 749px) {
+    .pdp-cmp__title {
+      font-size: 24px;
+    }
+  }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "PDP · Comparison",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why We Are Really Different" },
+    { "type": "checkbox", "id": "show_button", "label": "Show button", "default": true },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "ADD TO CART" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "solution", "label": "Solution", "default": "Sleeping Pills" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "how_it_works", "label": "How it works" },
+        { "type": "text", "id": "what_to_consider", "label": "What to consider" },
+        { "type": "text", "id": "cost_over_time", "label": "Cost over time" },
+        { "type": "text", "id": "side_effects", "label": "Side effects" },
+        { "type": "checkbox", "id": "highlighted", "label": "Highlight (Terra Therapy row)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP · Comparison",
+      "blocks": [{ "type": "row" }, { "type": "row" }, { "type": "row" }, { "type": "row" }, { "type": "row" }]
+    }
+  ]
+}
+{% endschema %}

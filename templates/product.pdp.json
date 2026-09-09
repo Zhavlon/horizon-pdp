@@ -12,25 +12,6 @@
     "main": {
       "type": "product-information",
       "blocks": {
-        "disclosures_g9mWze": {
-          "type": "disclosures",
-          "name": "t:names.disclosures",
-          "settings": {
-            "heading": "Disclosures",
-            "heading_preset": "h5",
-            "open_by_default": false,
-            "icon": "caret",
-            "disclosure_heading_preset": "h6",
-            "text_color": "",
-            "dividers": true,
-            "divider_color": "{{ settings.color_palette.color2 }}",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "media-gallery": {
           "type": "_product-media-gallery",
           "static": true,
@@ -264,166 +245,212 @@
           ]
         }
       },
-      "block_order": [
-        "disclosures_g9mWze"
-      ],
       "settings": {
-        "content_width": "content-center-aligned",
+        "content_width": "content-full-width",
         "desktop_media_position": "left",
-        "equal_columns": false,
+        "equal_columns": true,
         "limit_details_width": false,
-        "gap": 48,
+        "gap": 44,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
     },
-    "product_recommendations_qggXJq": {
-      "type": "product-recommendations",
+    "pdp_trust_bar_9z8pBX": {
+      "type": "pdp-trust-bar",
       "blocks": {
-        "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
+        "item_8AfMwt": {
+          "type": "item",
           "settings": {
-            "text": "<h3>You may also like </h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "text": "90-Day Results-Backed Guarantee"
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "item_8gDVNC": {
+          "type": "item",
           "settings": {
-            "product_card_gap": 8,
-            "background_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "text_color": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
+            "text": "90-Day Results-Backed Guarantee"
+          }
+        },
+        "item_TTxGiF": {
+          "type": "item",
+          "settings": {
+            "text": "90-Day Results-Backed Guarantee"
+          }
+        },
+        "item_qewE43": {
+          "type": "item",
+          "settings": {
+            "text": "90-Day Results-Backed Guarantee"
+          }
         }
       },
       "block_order": [
-        "text_cbcgyb"
+        "item_8AfMwt",
+        "item_8gDVNC",
+        "item_TTxGiF",
+        "item_qewE43"
       ],
-      "name": "t:names.product_recommendations",
+      "name": "PDP · Trust bar",
+      "settings": {}
+    },
+    "pdp_body_systems_Uw3Pf4": {
+      "type": "pdp-body-systems",
+      "blocks": {
+        "system_hjCYaQ": {
+          "type": "system",
+          "settings": {
+            "name": "Neurological & Mental Health",
+            "intro": "",
+            "conditions": "",
+            "link_text": "Explore the science behind these benefits",
+            "link_url": ""
+          }
+        },
+        "system_pH4r7P": {
+          "type": "system",
+          "settings": {
+            "name": "Neurological & Mental Health",
+            "intro": "",
+            "conditions": "",
+            "link_text": "Explore the science behind these benefits",
+            "link_url": ""
+          }
+        },
+        "system_Y9qzic": {
+          "type": "system",
+          "settings": {
+            "name": "Neurological & Mental Health",
+            "intro": "",
+            "conditions": "",
+            "link_text": "Explore the science behind these benefits",
+            "link_url": ""
+          }
+        },
+        "system_zGrezX": {
+          "type": "system",
+          "settings": {
+            "name": "Neurological & Mental Health",
+            "intro": "",
+            "conditions": "",
+            "link_text": "Explore the science behind these benefits",
+            "link_url": ""
+          }
+        },
+        "system_XPEGb3": {
+          "type": "system",
+          "settings": {
+            "name": "Neurological & Mental Health",
+            "intro": "",
+            "conditions": "",
+            "link_text": "Explore the science behind these benefits",
+            "link_url": ""
+          }
+        },
+        "system_kJHVCN": {
+          "type": "system",
+          "settings": {
+            "name": "Neurological & Mental Health",
+            "intro": "",
+            "conditions": "",
+            "link_text": "Explore the science behind these benefits",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "system_hjCYaQ",
+        "system_pH4r7P",
+        "system_Y9qzic",
+        "system_zGrezX",
+        "system_XPEGb3",
+        "system_kJHVCN"
+      ],
+      "name": "PDP · Body systems",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "heading": "One Natural Solution. Whole-Body Benefits.",
+        "intro": "Grounding supports every major system in your body, helping relieve chronic symptoms, restore balance, and promote long-term wellness. Backed by 20+ years of research and thousands of customer results.",
+        "autoplay": 10
+      }
+    },
+    "pdp_comparison_NYmMp9": {
+      "type": "pdp-comparison",
+      "blocks": {
+        "row_wfYKM3": {
+          "type": "row",
+          "settings": {
+            "solution": "Sleeping Pills",
+            "how_it_works": "",
+            "what_to_consider": "",
+            "cost_over_time": "",
+            "side_effects": "",
+            "highlighted": false
+          }
+        },
+        "row_cqrRHG": {
+          "type": "row",
+          "settings": {
+            "solution": "Sleeping Pills",
+            "how_it_works": "",
+            "what_to_consider": "",
+            "cost_over_time": "",
+            "side_effects": "",
+            "highlighted": false
+          }
+        },
+        "row_pCJAzt": {
+          "type": "row",
+          "settings": {
+            "solution": "Sleeping Pills",
+            "how_it_works": "",
+            "what_to_consider": "",
+            "cost_over_time": "",
+            "side_effects": "",
+            "highlighted": false
+          }
+        },
+        "row_aTdBVd": {
+          "type": "row",
+          "settings": {
+            "solution": "Sleeping Pills",
+            "how_it_works": "",
+            "what_to_consider": "",
+            "cost_over_time": "",
+            "side_effects": "",
+            "highlighted": false
+          }
+        },
+        "row_GdQ4jd": {
+          "type": "row",
+          "settings": {
+            "solution": "Sleeping Pills",
+            "how_it_works": "",
+            "what_to_consider": "",
+            "cost_over_time": "",
+            "side_effects": "",
+            "highlighted": false
+          }
+        }
+      },
+      "block_order": [
+        "row_wfYKM3",
+        "row_cqrRHG",
+        "row_pCJAzt",
+        "row_aTdBVd",
+        "row_GdQ4jd"
+      ],
+      "name": "PDP · Comparison",
+      "settings": {
+        "heading": "Why We Are Really Different",
+        "show_button": true,
+        "button_label": "ADD TO CART"
       }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "pdp_trust_bar_9z8pBX",
+    "pdp_body_systems_Uw3Pf4",
+    "pdp_comparison_NYmMp9"
   ]
 }
