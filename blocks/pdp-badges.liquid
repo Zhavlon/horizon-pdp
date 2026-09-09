@@ -1,0 +1,49 @@
+<div class="pdp-badges" {{ block.shopify_attributes }}>
+  {% if block.settings.stock_text != blank -%}
+    <span class="pdp-badge pdp-badge--stock">{{ block.settings.stock_text }}</span>
+  {%- endif %}
+  {% if block.settings.viewers != blank -%}
+    <span class="pdp-badge pdp-badge--view">{{ block.settings.viewers }}</span>
+  {%- endif %}
+</div>
+{% stylesheet %}
+  .pdp-badges {
+    display: flex;
+    gap: 10px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+  }
+  .pdp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .pdp-badge--stock {
+    background: #fde4e4;
+    color: #c0392b;
+  }
+  .pdp-badge--view {
+    background: #e8f0e4;
+    color: #3b6b34;
+  }
+  .pdp-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "PDP Badges",
+  "settings": [
+    { "type": "text", "id": "stock_text", "label": "Stock badge", "default": "Limited Stock" },
+    { "type": "text", "id": "viewers", "label": "Viewers", "default": "23 people viewing this now" }
+  ],
+  "presets": [{ "name": "PDP Badges" }]
+}
+{% endschema %}
