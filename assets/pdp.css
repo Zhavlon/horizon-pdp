@@ -221,7 +221,7 @@
    ============================================================ */
 .pdp-avatars__row {
 	display: flex;
-	gap: 10px;
+	gap: 30px;
 	flex-wrap: wrap;
 	align-items: center;
 }
