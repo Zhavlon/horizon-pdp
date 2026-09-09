@@ -1,0 +1,73 @@
+<div class="pdp-tabs" {{ block.shopify_attributes }}>
+  <details class="pdp-tab" open>
+    <summary>Description</summary>
+    <div class="rte">{{ product.description }}</div>
+  </details>
+  {% if block.settings.who != blank %}
+    <details class="pdp-tab">
+      <summary>Who is it for?</summary>
+      <div class="rte">{{ block.settings.who }}</div>
+    </details>
+  {% endif %}
+  {% if block.settings.shipping != blank %}
+    <details class="pdp-tab">
+      <summary>Shipping and returns</summary>
+      <div class="rte">{{ block.settings.shipping }}</div>
+    </details>
+  {% endif %}
+  {% if block.settings.care != blank %}
+    <details class="pdp-tab">
+      <summary>Care Instructions</summary>
+      <div class="rte">{{ block.settings.care }}</div>
+    </details>
+  {% endif %}
+</div>
+{% stylesheet %}
+  .pdp-tab {
+    border-top: 1px solid #e3e0d8;
+    padding: 16px 0;
+  }
+  .pdp-tab summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+  }
+  .pdp-tab summary::after {
+    content: '+';
+  }
+  .pdp-tab[open] summary::after {
+    content: '–';
+  }
+  .pdp-tab .rte {
+    padding-top: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "PDP Tabs",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "who",
+      "label": "Who is it for?",
+      "default": "<p>Grounding can support you if you're:</p><ul><li>Struggling with poor sleep, racing thoughts, or insomnia</li><li>Waking up stiff, sore, or fatigued</li><li>Living with chronic pain, inflammation, or autoimmune issues</li><li>Experiencing anxiety, stress, or hormonal imbalance</li><li>Looking for a natural, non-invasive wellness solution</li></ul>"
+    },
+    {
+      "type": "richtext",
+      "id": "shipping",
+      "label": "Shipping and returns",
+      "default": "<ul><li>Free U.S. shipping on orders over $100</li><li>Fast delivery: 2–6 days (U.S. &amp; Canada), 7–10 days (EU &amp; international)</li><li>90-Day Money-Back Guarantee: try it risk-free. If you don't feel the benefits, send it back.</li><li>Returns: contact our support team for easy return instructions. Products must be in good condition.</li><li>Support: our team is available 24/7 to help with ordering, setup, or troubleshooting.</li></ul>"
+    },
+    {
+      "type": "richtext",
+      "id": "care",
+      "label": "Care Instructions",
+      "default": "<p>To maintain conductivity and extend the life of your grounding sheet:</p><ul><li>Wash on gentle cycle with mild detergent</li><li>Avoid bleach, fabric softeners, or dryer sheets</li><li>Air dry when possible, or tumble dry on low</li><li>Do not dry clean</li><li>Wash regularly to remove body oils that can affect performance</li></ul>"
+    }
+  ]
+}
+{% endschema %}
