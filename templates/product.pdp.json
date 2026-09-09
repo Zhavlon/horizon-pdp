@@ -37,8 +37,9 @@
           "settings": {
             "media_presentation": "grid",
             "media_columns": "two",
-            "image_gap": 4,
-            "large_first_image": false,
+            "image_gap": 1,
+            "large_first_image": true,
+            "icons_style": "arrow",
             "slideshow_controls_style": "counter",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
@@ -86,131 +87,81 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "group_icgrde": {
-              "type": "group",
-              "name": "t:names.header",
+            "text_Eqhegy": {
+              "type": "text",
+              "name": "t:names.product_title",
               "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "background_media": "none",
-                "background_color": "",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "open_in_new_tab": false,
-                "placeholder": "",
+                "text": "<h1>{{ closest.product.title }}</h1>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              },
-              "blocks": {
-                "text_xrnftG": {
-                  "type": "text",
-                  "name": "t:names.product_title",
-                  "settings": {
-                    "text": "<h1>{{ closest.product.title }}</h1>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "h3",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "price_tVjtKg": {
-                  "type": "price",
-                  "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "type_preset": "paragraph",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "text_color": "",
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_xrnftG",
-                "price_tVjtKg"
-              ]
-            },
-            "divider_VJhene": {
-              "type": "_divider",
-              "name": "t:names.divider",
-              "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "divider_color": "{{ settings.color_palette.color2 }}",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
               },
               "blocks": {}
             },
-            "variant_picker_R3rGDr": {
-              "type": "variant-picker",
+            "pdp_badges_APaQDQ": {
+              "type": "pdp-badges",
+              "name": "PDP Badges",
               "settings": {
-                "variant_style": "buttons",
-                "show_swatches": false,
-                "option_label_text_color": "",
-                "variant_style_class": "default",
-                "custom_variant_background": "{{ settings.color_palette.background }}",
-                "custom_variant_text": "{{ settings.color_palette.foreground }}",
-                "custom_variant_border": "{{ settings.color_palette.foreground }}",
-                "selected_variant_style_class": "default",
-                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
-                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
-                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "stock_text": "Limited Stock",
+                "viewers": "23 people viewing this now"
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_6e21c40_HaDiEr": {
+              "type": "ai_gen_block_6e21c40",
+              "settings": {
+                "font_size": 16,
+                "text_color": "#333333",
+                "text_alignment": "left",
+                "padding_top": 10,
+                "padding_bottom": 10,
+                "padding_horizontal": 0,
+                "desktop_width_percent": 100
+              },
+              "blocks": {}
+            },
+            "price_gYQcVf": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "paragraph",
+                "width": "100%",
                 "alignment": "left",
-                "padding-block-start": 0,
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 4,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "pdp_features_R7FRxr": {
+              "type": "pdp-features",
+              "name": "PDP Features",
+              "settings": {
+                "heading": "Why you need this?"
               },
               "blocks": {}
             },
@@ -243,6 +194,7 @@
               "blocks": {
                 "quantity": {
                   "type": "quantity",
+                  "disabled": true,
                   "static": true,
                   "settings": {
                     "input_style": "default",
@@ -267,6 +219,7 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -274,39 +227,40 @@
               },
               "block_order": []
             },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "t:names.product_description",
+            "pdp_avatars_E87HUX": {
+              "type": "pdp-avatars",
+              "name": "PDP Avatars",
               "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "heading": "Real People. Real Healing.",
+                "video_url": "",
+                "avatar_1": "shopify://shop_images/Ellipse_94.png",
+                "avatar_2": "shopify://shop_images/Ellipse_94.png",
+                "avatar_3": "shopify://shop_images/Ellipse_94.png",
+                "avatar_4": "shopify://shop_images/Ellipse_94.png",
+                "avatar_5": "shopify://shop_images/Ellipse_94.png"
+              },
+              "blocks": {}
+            },
+            "pdp_tabs_4LXWVy": {
+              "type": "pdp-tabs",
+              "name": "PDP Tabs",
+              "settings": {
+                "who": "<p>Grounding can support you if you're:</p><ul><li>Struggling with poor sleep, racing thoughts, or insomnia</li><li>Waking up stiff, sore, or fatigued</li><li>Living with chronic pain, inflammation, or autoimmune issues</li><li>Experiencing anxiety, stress, or hormonal imbalance</li><li>Looking for a natural, non-invasive wellness solution</li></ul>",
+                "shipping": "<ul><li>Free U.S. shipping on orders over $100</li><li>Fast delivery: 2–6 days (U.S. & Canada), 7–10 days (EU & international)</li><li>90-Day Money-Back Guarantee: try it risk-free. If you don't feel the benefits, send it back.</li><li>Returns: contact our support team for easy return instructions. Products must be in good condition.</li><li>Support: our team is available 24/7 to help with ordering, setup, or troubleshooting.</li></ul>",
+                "care": "<p>To maintain conductivity and extend the life of your grounding sheet:</p><ul><li>Wash on gentle cycle with mild detergent</li><li>Avoid bleach, fabric softeners, or dryer sheets</li><li>Air dry when possible, or tumble dry on low</li><li>Do not dry clean</li><li>Wash regularly to remove body oils that can affect performance</li></ul>"
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "group_icgrde",
-            "divider_VJhene",
-            "variant_picker_R3rGDr",
+            "text_Eqhegy",
+            "pdp_badges_APaQDQ",
+            "ai_gen_block_6e21c40_HaDiEr",
+            "price_gYQcVf",
+            "pdp_features_R7FRxr",
             "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "pdp_avatars_E87HUX",
+            "pdp_tabs_4LXWVy"
           ]
         }
       },
