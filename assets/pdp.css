@@ -2,12 +2,12 @@
    PDP — Design tokens (values taken from the Figma variables)
    ============================================================ */
 :root {
-	--pdp-text: #31331e; /* Brand 500 — primary text */
+	--pdp-text: #31331e;
 	--pdp-dark: #31331e;
-	--pdp-cream: #f4f3ee; /* BG color 02 */
-	--pdp-btn: #a8ca1b; /* Buttons */
-	--pdp-sage: #a5b99c; /* Save badge background */
-	--pdp-compare: #fc6967; /* Compare-at price */
+	--pdp-cream: #f4f3ee;
+	--pdp-btn: #a8ca1b;
+	--pdp-sage: #a5b99c;
+	--pdp-compare: #fc6967;
 	--pdp-stock-bg: #f7d2cd;
 	--pdp-stock-dot: #ff9696;
 	--pdp-viewers-bg: #d5dfce;
@@ -101,11 +101,11 @@
 	text-transform: uppercase;
 	letter-spacing: 0.02em;
 }
-/* The Figma button is text-only — drop the theme's cart glyph */
+
 .product-details .add-to-cart-button .svg-wrapper {
 	display: none;
 }
-/* No dynamic checkout button in the design */
+
 .product-details .shopify-payment-button {
 	display: none;
 }
@@ -122,14 +122,14 @@
 /* ============================================================
    Buy box — price row + Save badge
    ============================================================ */
-/* Price and Save badge share one row (they sit in a Group block) */
+
 .product-details .group-block-content:has(> .pdp-save-badge) {
 	display: flex;
 	align-items: center;
 	gap: 15px;
 	flex-wrap: wrap;
 }
-/* Compare-at price comes first, then the current price */
+
 .product-details [ref="priceContainer"] {
 	display: flex;
 	align-items: baseline;
@@ -205,7 +205,7 @@
 	color: var(--pdp-text);
 	font-weight: 600;
 }
-/* Progress track: a hairline per step, thickened under the active step */
+
 .pdp-tabs__ind {
 	position: relative;
 	align-self: stretch;
@@ -225,7 +225,7 @@
 	border-radius: 999px;
 	background: var(--pdp-text);
 }
-/* Step marker closing each segment */
+
 .pdp-tabs__ind::after {
 	content: "";
 	position: absolute;
@@ -238,7 +238,6 @@
 	transform: translateY(-50%);
 }
 
-/* Panels: only the active one shows on desktop */
 .pdp-tabs__panel {
 	display: none;
 }
@@ -274,7 +273,7 @@
 .pdp.pdp-trust .pdp-trust__item span {
 	color: #fff;
 }
-/* brightness(0) flattens any icon to black, invert(1) flips it to white */
+
 .pdp.pdp-trust .pdp-trust__item img {
 	filter: brightness(0) invert(1);
 }
@@ -296,7 +295,6 @@
 	width: 86px;
 	height: 86px;
 	flex: 0 0 auto;
-	/* the rings below are drawn outside the box, so reserve room for them */
 	margin: 4px;
 	padding: 0;
 	border: none;

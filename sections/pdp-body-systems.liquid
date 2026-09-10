@@ -18,7 +18,13 @@
             {{ block.shopify_attributes }}
           >
             {%- if block.settings.tab_icon -%}
-              <img src="{{ block.settings.tab_icon | image_url: width: 48 }}" alt="" width="24" height="24" loading="lazy">
+              <img
+                src="{{ block.settings.tab_icon | image_url: width: 48 }}"
+                alt=""
+                width="24"
+                height="24"
+                loading="lazy"
+              >
             {%- endif -%}
             <span>{{ block.settings.name }}</span>
           </button>
@@ -48,7 +54,13 @@
             {%- if block.settings.link_text != blank -%}
               <a class="pdp-bs__card-link" href="{{ block.settings.link_url | default: '#' }}">
                 {%- if block.settings.link_icon -%}
-                  <img src="{{ block.settings.link_icon | image_url: width: 48 }}" alt="" width="24" height="24" loading="lazy">
+                  <img
+                    src="{{ block.settings.link_icon | image_url: width: 48 }}"
+                    alt=""
+                    width="24"
+                    height="24"
+                    loading="lazy"
+                  >
                 {%- endif -%}
                 <span>{{ block.settings.link_text }}</span>
               </a>
@@ -81,8 +93,6 @@
     padding: 71px var(--pdp-gutter) 27px;
   }
 
-  /* Three columns matching Figma: pills (377) | image (331) | card (580).
-     The heading and intro span the first two, the card spans every row. */
   .pdp-bs__grid {
     position: relative;
     display: grid;
@@ -144,7 +154,6 @@
     filter: brightness(0) invert(1);
   }
 
-  /* Image sits flush against the card's left edge and shares its baseline */
   .pdp-bs__media {
     grid-area: 3 / 2 / 4 / 3;
     align-self: end;
@@ -222,7 +231,6 @@
     filter: brightness(0) invert(1);
   }
 
-  /* Arrows straddle the outer edges of the image and the card */
   .pdp-bs__nav {
     position: absolute;
     bottom: 75px;
@@ -294,7 +302,6 @@
       margin-top: 20px;
       margin-bottom: 0;
     }
-    /* The pill row scrolls horizontally on mobile, so the arrows are redundant */
     .pdp-bs__nav {
       display: none;
     }

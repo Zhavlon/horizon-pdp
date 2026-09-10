@@ -18,7 +18,13 @@
             <tr class="{% if block.settings.highlighted %}is-highlight{% endif %}" {{ block.shopify_attributes }}>
               <td class="pdp-cmp__sol">
                 {%- if block.settings.icon -%}
-                  <img src="{{ block.settings.icon | image_url: width: 160 }}" alt="" width="80" height="56" loading="lazy">
+                  <img
+                    src="{{ block.settings.icon | image_url: width: 160 }}"
+                    alt=""
+                    width="80"
+                    height="56"
+                    loading="lazy"
+                  >
                 {%- endif -%}
                 <span>{{ block.settings.solution }}</span>
               </td>
@@ -54,8 +60,6 @@
   .pdp-cmp {
     background: var(--pdp-cream);
   }
-  /* max-width is border-box, so the gutter must be added on top to leave
-     the 1274px table width from the design */
   .pdp-cmp__inner {
     max-width: var(--pdp-max);
     margin-inline: auto;
@@ -67,7 +71,6 @@
     line-height: 1.2;
     margin: 0;
   }
-  /* The highlighted row bleeds past the card, so leave room inside the scroller */
   .pdp-cmp__scroll {
     overflow-x: auto;
     padding-inline: 24px;
@@ -99,7 +102,6 @@
   .pdp-cmp__table tbody tr + tr td {
     border-top: 1px solid #e5e5e3;
   }
-  /* Column widths and alignment follow the Figma grid */
   .pdp-cmp__table :is(th, td):nth-child(1) {
     width: 12.5%;
     padding-inline: 12px;
@@ -130,7 +132,6 @@
     object-fit: contain;
   }
 
-  /* Terra Therapy row: gradient band that overhangs both edges of the card */
   .pdp-cmp__table tr.is-highlight {
     background: linear-gradient(90deg, #7a9e66 0%, #a6c08b 26%, #4e7a48 45%, #43703f 100%);
   }
