@@ -103,17 +103,10 @@
               },
               "blocks": {}
             },
-            "ai_gen_block_6e21c40_HaDiEr": {
-              "type": "ai_gen_block_6e21c40",
-              "settings": {
-                "font_size": 16,
-                "text_color": "#333333",
-                "text_alignment": "left",
-                "padding_top": 10,
-                "padding_bottom": 10,
-                "padding_horizontal": 0,
-                "desktop_width_percent": 100
-              },
+            "pdp_subheading_HaDiEr": {
+              "type": "pdp-subheading",
+              "name": "PDP Subheading",
+              "settings": {},
               "blocks": {}
             },
             "group_ztaUNN": {
@@ -289,7 +282,7 @@
           "block_order": [
             "text_Eqhegy",
             "pdp_badges_APaQDQ",
-            "ai_gen_block_6e21c40_HaDiEr",
+            "pdp_subheading_HaDiEr",
             "group_ztaUNN",
             "pdp_features_R7FRxr",
             "buy_buttons_eYQEYi",

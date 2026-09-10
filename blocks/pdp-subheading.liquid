@@ -1,0 +1,12 @@
+{%- assign subheading = closest.product.metafields.custom.subheading -%}
+{%- if subheading != blank -%}
+  <p class="pdp-subheading" {{ block.shopify_attributes }}>{{ subheading }}</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "PDP Subheading",
+  "settings": [],
+  "presets": [{ "name": "PDP Subheading" }]
+}
+{% endschema %}

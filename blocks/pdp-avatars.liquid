@@ -1,30 +1,33 @@
 <div class="pdp-avatars" {{ block.shopify_attributes }} data-pdp-video>
-  {% if block.settings.heading != blank %}
+  {%- if block.settings.heading != blank -%}
     <h3 class="pdp-avatars__title">{{ block.settings.heading }}</h3>
-  {% endif %}
+  {%- endif -%}
   <div class="pdp-avatars__row">
-    {% for i in (1..5) %}
+    {%- for i in (1..5) -%}
       {%- assign key = 'avatar_' | append: i -%}
       {%- assign img = block.settings[key] -%}
-      {% if img %}
+      {%- if img -%}
         <button class="pdp-avatars__img" type="button" data-video-open aria-label="Play video">
-          <img src="{{ img | image_url: width: 120 }}" alt="" width="60" height="60" loading="lazy">
+          <img src="{{ img | image_url: width: 180 }}" alt="" width="86" height="86" loading="lazy">
         </button>
-      {% endif %}
-    {% endfor %}
+      {%- endif -%}
+    {%- endfor -%}
   </div>
-  {% if block.settings.video_url != blank %}
+  {%- if block.settings.video_url != blank -%}
     <dialog class="pdp-vmodal">
-      <button class="pdp-vmodal__close" type="button" data-video-close aria-label="Close">×</button>
+      <button class="pdp-vmodal__close" type="button" data-video-close aria-label="Close">&times;</button>
       <video class="pdp-vmodal__video" src="{{ block.settings.video_url }}" controls playsinline></video>
     </dialog>
-  {% endif %}
+  {%- endif -%}
 </div>
+
 {% stylesheet %}
   .pdp-avatars__title {
     font-family: var(--font-heading);
-    font-size: 22px;
-    margin: 0 0 12px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 20px;
   }
   .pdp-vmodal {
     border: 0;
@@ -53,35 +56,37 @@
     cursor: pointer;
   }
 {% endstylesheet %}
+
 <script>
   (function () {
     document.querySelectorAll('[data-pdp-video]').forEach(function (root) {
-      var dlg = root.querySelector('.pdp-vmodal');
-      if (!dlg || !dlg.showModal) return;
-      var vid = dlg.querySelector('video');
-      root.querySelectorAll('[data-video-open]').forEach(function (b) {
-        b.addEventListener('click', function () {
-          dlg.showModal();
-          if (vid) {
-            vid.play();
-          }
+      var dialog = root.querySelector('.pdp-vmodal');
+      if (!dialog || !dialog.showModal) return;
+      var video = dialog.querySelector('video');
+
+      function close() {
+        if (video) video.pause();
+        dialog.close();
+      }
+
+      root.querySelectorAll('[data-video-open]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          dialog.showModal();
+          if (video) video.play();
         });
       });
-      function close() {
-        if (vid) {
-          vid.pause();
-        }
-        dlg.close();
-      }
-      dlg.querySelector('[data-video-close]').addEventListener('click', close);
-      dlg.addEventListener('click', function (e) {
-        if (e.target === dlg) {
-          close();
-        }
+      dialog.querySelector('[data-video-close]').addEventListener('click', close);
+      dialog.addEventListener('close', function () {
+        if (video) video.pause();
+      });
+      // Clicking the backdrop closes the dialog
+      dialog.addEventListener('click', function (event) {
+        if (event.target === dialog) close();
       });
     });
   })();
 </script>
+
 {% schema %}
 {
   "name": "PDP Avatars",

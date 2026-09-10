@@ -1,15 +1,16 @@
 <div class="pdp pdp-trust">
   <div class="pdp-trust__inner">
-    {% for block in section.blocks %}
+    {%- for block in section.blocks -%}
       <div class="pdp-trust__item" {{ block.shopify_attributes }}>
-        {% if block.settings.icon -%}
-          <img src="{{ block.settings.icon | image_url: width: 48 }}" alt="" width="24" height="24">
-        {%- endif %}
+        {%- if block.settings.icon -%}
+          <img src="{{ block.settings.icon | image_url: width: 72 }}" alt="" width="36" height="36" loading="lazy">
+        {%- endif -%}
         <span>{{ block.settings.text }}</span>
       </div>
-    {% endfor %}
+    {%- endfor -%}
   </div>
 </div>
+
 {% stylesheet %}
   .pdp-trust {
     background: var(--pdp-dark);
@@ -18,7 +19,7 @@
   .pdp-trust__inner {
     max-width: var(--pdp-max);
     margin-inline: auto;
-    padding: 18px var(--pdp-gutter);
+    padding: 28px 131px;
     display: flex;
     justify-content: space-between;
     gap: 24px;
@@ -27,22 +28,32 @@
   .pdp-trust__item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 15px;
+    gap: 8px;
+    font-size: 16px;
+    line-height: 1.4;
   }
   .pdp-trust__item img {
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
     object-fit: contain;
   }
 
-  @media (max-width: 749px) {
+  @media (max-width: 1199px) {
+    .pdp-trust__inner {
+      padding-inline: var(--pdp-gutter);
+    }
+  }
+  @media (max-width: 989px) {
     .pdp-trust__inner {
       flex-direction: column;
       align-items: flex-start;
+      gap: 5px;
+      padding-block: 23px;
     }
   }
 {% endstylesheet %}
+
 {% schema %}
 {
   "name": "PDP · Trust bar",

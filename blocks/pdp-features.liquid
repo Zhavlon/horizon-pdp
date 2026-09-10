@@ -1,22 +1,26 @@
 <div class="pdp-features" {{ block.shopify_attributes }}>
-  {% if block.settings.heading != blank %}
+  {%- if block.settings.heading != blank -%}
     <p class="pdp-features__title">{{ block.settings.heading }}</p>
-  {% endif %}
+  {%- endif -%}
   <ul class="pdp-features__grid">
-    {% for f in closest.product.metafields.custom.features.value %}
+    {%- for feature in closest.product.metafields.custom.features.value -%}
       <li class="pdp-features__item">
-        {% if f.icon.value -%}
-          <img src="{{ f.icon.value | image_url: width: 64 }}" alt="" width="28" height="28" loading="lazy">
-        {%- endif %}
-        <span>{{ f.text }}</span>
+        {%- if feature.icon.value -%}
+          <img src="{{ feature.icon.value | image_url: width: 48 }}" alt="" width="24" height="24" loading="lazy">
+        {%- endif -%}
+        <span>{{ feature.text }}</span>
       </li>
-    {% endfor %}
+    {%- endfor -%}
   </ul>
 </div>
+
 {% stylesheet %}
   .pdp-features__title {
-    font-weight: 600;
-    margin: 0 0 12px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 22px;
   }
   .pdp-features__grid {
     list-style: none;
@@ -24,26 +28,29 @@
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px 16px;
+    gap: 24px 56px;
   }
   .pdp-features__item {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
+    font-family: var(--font-body);
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.3;
   }
   .pdp-features__item img {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
   }
   @media (max-width: 749px) {
     .pdp-features__grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 14px 44px;
     }
   }
 {% endstylesheet %}
+
 {% schema %}
 {
   "name": "PDP Features",

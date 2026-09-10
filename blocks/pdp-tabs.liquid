@@ -3,29 +3,28 @@
 -%}
 
 <div class="pdp-tabs" data-pdp-tabs {{ block.shopify_attributes }}>
-  {%- comment -%} Stepper-style tab nav {%- endcomment -%}
+  {%- comment -%} Desktop: stepper nav. Mobile: hidden, each panel gets its own header. {%- endcomment -%}
   <div class="pdp-tabs__nav" role="tablist">
-    <button class="pdp-tabs__navbtn is-active" data-tab="desc" role="tab" type="button">
+    <button class="pdp-tabs__navbtn is-active" data-tab="desc" role="tab" type="button" aria-selected="true">
       <span class="pdp-tabs__label">Description</span>
       <span class="pdp-tabs__ind"></span>
     </button>
-    <button class="pdp-tabs__navbtn" data-tab="who" role="tab" type="button">
+    <button class="pdp-tabs__navbtn" data-tab="who" role="tab" type="button" aria-selected="false">
       <span class="pdp-tabs__label">Who is it for?</span>
       <span class="pdp-tabs__ind"></span>
     </button>
-    <button class="pdp-tabs__navbtn" data-tab="ship" role="tab" type="button">
+    <button class="pdp-tabs__navbtn" data-tab="ship" role="tab" type="button" aria-selected="false">
       <span class="pdp-tabs__label">Shipping and returns</span>
       <span class="pdp-tabs__ind"></span>
     </button>
-    <button class="pdp-tabs__navbtn" data-tab="care" role="tab" type="button">
+    <button class="pdp-tabs__navbtn" data-tab="care" role="tab" type="button" aria-selected="false">
       <span class="pdp-tabs__label">Care Instructions</span>
       <span class="pdp-tabs__ind"></span>
     </button>
   </div>
 
-  {%- comment -%} Panels (each has its own mobile header) {%- endcomment -%}
   <div class="pdp-tabs__panels">
-    <div class="pdp-tabs__panel is-active" data-panel="desc">
+    <div class="pdp-tabs__panel is-active is-open" data-panel="desc">
       <button class="pdp-tabs__head" type="button">Description</button>
       <div class="pdp-tabs__body rte">{{ product.description }}</div>
     </div>
@@ -55,14 +54,15 @@
 
       var navBtns = root.querySelectorAll('.pdp-tabs__navbtn');
       var panels = root.querySelectorAll('.pdp-tabs__panel');
-      var mq = window.matchMedia('(min-width: 750px)');
+      var desktop = window.matchMedia('(min-width: 750px)');
 
-      // Desktop: nav button switches the active panel
       navBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
           var key = btn.dataset.tab;
           navBtns.forEach(function (b) {
-            b.classList.toggle('is-active', b === btn);
+            var active = b === btn;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-selected', active ? 'true' : 'false');
           });
           panels.forEach(function (p) {
             p.classList.toggle('is-active', p.dataset.panel === key);
@@ -70,13 +70,13 @@
         });
       });
 
-      // Mobile: panel header toggles that panel (accordion)
-      panels.forEach(function (p) {
-        var head = p.querySelector('.pdp-tabs__head');
+      // Mobile only: the panel header toggles its own body (accordion)
+      panels.forEach(function (panel) {
+        var head = panel.querySelector('.pdp-tabs__head');
         if (!head) return;
         head.addEventListener('click', function () {
-          if (mq.matches) return; // desktop uses the nav row
-          p.classList.toggle('is-open');
+          if (desktop.matches) return;
+          panel.classList.toggle('is-open');
         });
       });
     }

@@ -1,32 +1,34 @@
 /* ============================================================
-   PDP — Design tokens
+   PDP — Design tokens (values taken from the Figma variables)
    ============================================================ */
 :root {
-	--pdp-text: #31331e;
+	--pdp-text: #31331e; /* Brand 500 — primary text */
 	--pdp-dark: #31331e;
-	--pdp-cream: #f4f3ee;
-	--pdp-btn: #a8ca1b;
-	--pdp-green: #56814c;
-	--pdp-green-row: #7aa66f;
-	--pdp-success: #2aac11;
-	--pdp-alert: #ff3030;
-	--pdp-alert-soft: #ff8181;
-	--pdp-white: #ffffff;
+	--pdp-cream: #f4f3ee; /* BG color 02 */
+	--pdp-btn: #a8ca1b; /* Buttons */
+	--pdp-sage: #a5b99c; /* Save badge background */
+	--pdp-compare: #fc6967; /* Compare-at price */
+	--pdp-stock-bg: #f7d2cd;
+	--pdp-stock-dot: #ff9696;
+	--pdp-viewers-bg: #d5dfce;
+	--pdp-viewers-dot: #5cbb48;
+	--pdp-rule: rgba(49, 51, 30, 0.35);
+	--pdp-muted: #aaab9e;
 
 	--font-heading: "Recoleta", Georgia, serif;
-	--font-body: "Recoleta", Georgia, serif;
+	--font-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
 
 	--pdp-max: 1440px;
-	--pdp-gutter: clamp(16px, 5vw, 80px);
+	--pdp-gutter: clamp(20px, 5.9vw, 85px);
 }
 
 /* ============================================================
-   Base typography (custom .pdp sections)
+   Base typography for the custom .pdp sections
    ============================================================ */
 .pdp {
 	font-family: var(--font-body);
 	color: var(--pdp-text);
-	line-height: 1.11;
+	line-height: 1.4;
 }
 .pdp h1,
 .pdp h2,
@@ -61,95 +63,122 @@
 }
 
 /* ============================================================
-   Buy-box — font overrides for the native product block
+   Buy box — fonts for the native Horizon product blocks
+   Headings use Recoleta, everything else Figtree.
    ============================================================ */
 .product-details :is(h1, h2, h3),
 .pdp-avatars__title {
-	font-family: "Recoleta", Georgia, serif !important;
+	font-family: var(--font-heading) !important;
 	font-weight: 400;
 }
 .product-details,
 .product-details p,
 .product-details li,
+.pdp-badges,
 .pdp-features,
 .pdp-tabs,
-.pdp-avatars {
-	font-family: "Recoleta", Georgia, serif;
+.pdp-subheading {
+	font-family: var(--font-body);
+	color: var(--pdp-text);
 }
 .product-details h1 {
 	font-size: clamp(32px, 3.6vw, 48px);
-	line-height: 1.1;
+	line-height: 1.2;
 }
 
 /* ============================================================
-   Buy-box — Add to cart button
+   Buy box — Add to cart button
    ============================================================ */
 .product-details .add-to-cart-button,
 .product-details button[name="add"] {
 	background: var(--pdp-btn) !important;
 	color: var(--pdp-text) !important;
 	border-radius: 999px !important;
-	font-family: "Recoleta", serif;
-	font-size: 22px;
-	padding-block: 20px;
+	font-family: var(--font-heading);
+	font-size: 24px;
+	line-height: 1.2;
+	min-height: 67px;
 	text-transform: uppercase;
 	letter-spacing: 0.02em;
 }
-/* Hide the cart icon inside the ATC button */
+/* The Figma button is text-only — drop the theme's cart glyph */
 .product-details .add-to-cart-button .svg-wrapper {
 	display: none;
 }
-/* Hide the dynamic checkout (Shop Pay etc.) button */
+/* No dynamic checkout button in the design */
 .product-details .shopify-payment-button {
 	display: none;
 }
 
 /* ============================================================
-   Buy-box — Price + Save badge row
+   Buy box — subheading
    ============================================================ */
-/* Put Price and Save badge on one centered row (inside a Group block) */
+.pdp-subheading {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+/* ============================================================
+   Buy box — price row + Save badge
+   ============================================================ */
+/* Price and Save badge share one row (they sit in a Group block) */
 .product-details .group-block-content:has(> .pdp-save-badge) {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: 15px;
 	flex-wrap: wrap;
 }
-/* Price order: struck-through compare price first, then current price */
+/* Compare-at price comes first, then the current price */
 .product-details [ref="priceContainer"] {
 	display: flex;
 	align-items: baseline;
-	gap: 8px;
+	gap: 15px;
+	font-family: var(--font-heading);
+}
+.product-details [ref="priceContainer"] .price {
+	font-size: 36px;
+	line-height: 1.2;
+	color: var(--pdp-text);
 }
 .product-details .compare-at-price {
 	order: -1;
-	color: var(--pdp-alert);
-	text-decoration: line-through;
+	font-size: 36px;
+	line-height: 1.2;
+	color: var(--pdp-compare);
+	text-decoration: none;
 }
 
-/* Green "Save %XX OFF" pill */
 .pdp-save-badge {
 	display: inline-flex;
 	align-items: center;
-	padding: 4px 12px;
+	padding: 6px 15px;
 	border-radius: 999px;
-	background: var(--pdp-green);
-	color: #fff;
+	background: var(--pdp-sage);
+	color: var(--pdp-text);
 	font-family: var(--font-body);
 	font-weight: 700;
 	font-size: 14px;
-	line-height: 1;
-	letter-spacing: 0.02em;
+	line-height: 1.2;
 	white-space: nowrap;
 }
 
 /* ============================================================
-   PDP Tabs — stepper nav on desktop, accordion on mobile
+   Avatars + tabs are separated from the rest by hairline rules
+   ============================================================ */
+.pdp-avatars,
+.pdp-tabs {
+	border-top: 1px solid var(--pdp-rule);
+	padding-top: 30px;
+}
+
+/* ============================================================
+   Tabs — stepper on desktop, accordion on mobile
    ============================================================ */
 .pdp-tabs__nav {
-	display: flex;
-	gap: 18px;
-	align-items: center;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	align-items: end;
 	margin-bottom: 32px;
 }
 .pdp-tabs__navbtn {
@@ -158,28 +187,58 @@
 	border: none;
 	padding: 0;
 	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	padding-inline: 4px;
 }
 .pdp-tabs__label {
 	font-family: var(--font-body);
-	font-size: 20px;
-	line-height: 1;
-	color: rgba(49, 51, 30, 0.45);
-	white-space: nowrap;
+	font-size: 16px;
+	line-height: 1.2;
+	color: var(--pdp-muted);
+	text-align: center;
 	transition: color 0.15s;
 }
 .pdp-tabs__navbtn.is-active .pdp-tabs__label {
 	color: var(--pdp-text);
-	font-weight: 500;
+	font-weight: 600;
 }
-/* Indicators removed */
+/* Progress track: a hairline per step, thickened under the active step */
 .pdp-tabs__ind {
-	display: none;
+	position: relative;
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+	height: 13px;
 }
-.pdp-tabs__navbtn.is-active .pdp-tabs__ind::after {
-	display: none;
+.pdp-tabs__ind::before {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: var(--pdp-muted);
+	transition: height 0.2s ease;
+}
+.pdp-tabs__navbtn.is-active .pdp-tabs__ind::before {
+	height: 13px;
+	border-radius: 999px;
+	background: var(--pdp-text);
+}
+/* Step marker closing each segment */
+.pdp-tabs__ind::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--pdp-text);
+	transform: translateY(-50%);
 }
 
-/* Panels: only the active one is shown on desktop */
+/* Panels: only the active one shows on desktop */
 .pdp-tabs__panel {
 	display: none;
 }
@@ -188,14 +247,18 @@
 }
 .pdp-tabs__head {
 	display: none;
-} /* mobile accordion header */
+}
 .pdp-tabs__body {
 	font-family: var(--font-body);
 	font-size: 16px;
-	line-height: 1.6;
+	line-height: 1.4;
 	color: var(--pdp-text);
 }
+.pdp-tabs__body p {
+	margin: 0 0 12px;
+}
 .pdp-tabs__body ul {
+	margin: 0 0 12px;
 	padding-left: 1.2em;
 	list-style: disc;
 }
@@ -204,41 +267,47 @@
 }
 
 /* ============================================================
-   Trust bar — force light text + white icons over base .pdp
+   Trust bar — light text and white icons on the dark strip
    ============================================================ */
 .pdp.pdp-trust,
 .pdp.pdp-trust .pdp-trust__item,
 .pdp.pdp-trust .pdp-trust__item span {
 	color: #fff;
 }
-/* brightness(0) makes any icon black, invert(1) flips it to pure white */
+/* brightness(0) flattens any icon to black, invert(1) flips it to white */
 .pdp.pdp-trust .pdp-trust__item img {
 	filter: brightness(0) invert(1);
 }
 
 /* ============================================================
-   Avatars (Real people) — match Figma: compact, light ring
+   Avatars (Real People. Real Healing.)
    ============================================================ */
 .pdp-avatars__row {
 	display: flex;
-	gap: 30px;
-	flex-wrap: wrap;
+	gap: 28px;
 	align-items: center;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+.pdp-avatars__row::-webkit-scrollbar {
+	display: none;
 }
 .pdp-avatars .pdp-avatars__img {
-	width: 64px;
-	height: 64px;
+	width: 86px;
+	height: 86px;
 	flex: 0 0 auto;
+	/* the rings below are drawn outside the box, so reserve room for them */
+	margin: 4px;
 	padding: 0;
-	border: none; /* kill the theme's black button border */
+	border: none;
 	outline: none;
 	background: none;
 	border-radius: 50%;
 	overflow: hidden;
 	cursor: pointer;
 	box-shadow:
-		0 0 0 2px #fff,
-		0 0 0 3px #000; /* subtle double ring */
+		0 0 0 3px #fff,
+		0 0 0 4px var(--pdp-text);
 }
 .pdp-avatars .pdp-avatars__img img {
 	width: 100%;
@@ -247,7 +316,10 @@
 	display: block;
 	border-radius: 50%;
 }
-/* Mobile: collapse into an accordion */
+
+/* ============================================================
+   Mobile — tabs collapse into an accordion
+   ============================================================ */
 @media (max-width: 749px) {
 	.pdp-tabs__nav {
 		display: none;
@@ -255,7 +327,6 @@
 
 	.pdp-tabs__panel {
 		display: block;
-		border-bottom: 1px solid rgba(49, 51, 30, 0.15);
 	}
 	.pdp-tabs__head {
 		display: flex;
@@ -265,7 +336,9 @@
 		appearance: none;
 		background: none;
 		border: none;
-		padding: 16px 0;
+		border-bottom: 1px solid var(--pdp-rule);
+		padding: 0 0 17px;
+		margin-bottom: 17px;
 		font-family: var(--font-body);
 		font-size: 16px;
 		font-weight: 600;
@@ -285,9 +358,14 @@
 
 	.pdp-tabs__body {
 		display: none;
-		padding: 0 0 16px;
+		padding: 0 0 17px;
 	}
 	.pdp-tabs__panel.is-open .pdp-tabs__body {
 		display: block;
+	}
+
+	.pdp-avatars .pdp-avatars__img {
+		width: 82px;
+		height: 82px;
 	}
 }

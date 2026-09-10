@@ -14,12 +14,12 @@
           </tr>
         </thead>
         <tbody>
-          {% for block in section.blocks %}
+          {%- for block in section.blocks -%}
             <tr class="{% if block.settings.highlighted %}is-highlight{% endif %}" {{ block.shopify_attributes }}>
               <td class="pdp-cmp__sol">
-                {% if block.settings.icon -%}
-                  <img src="{{ block.settings.icon | image_url: width: 80 }}" alt="" width="40" height="40">
-                {%- endif %}
+                {%- if block.settings.icon -%}
+                  <img src="{{ block.settings.icon | image_url: width: 160 }}" alt="" width="80" height="56" loading="lazy">
+                {%- endif -%}
                 <span>{{ block.settings.solution }}</span>
               </td>
               <td>{{ block.settings.how_it_works }}</td>
@@ -27,92 +27,189 @@
               <td>{{ block.settings.cost_over_time }}</td>
               <td>{{ block.settings.side_effects }}</td>
             </tr>
-          {% endfor %}
+          {%- endfor -%}
         </tbody>
       </table>
     </div>
 
-    {% if section.settings.show_button %}
+    {%- if section.settings.show_button -%}
       <div class="pdp-cmp__cta">
-        <a href="{{ product.url | default: '#' }}" class="pdp-cmp__btn" data-add-to-cart>
+        {%- comment -%}
+          Falls back to the product page without JS; the script below upgrades it
+          to add the currently selected variant straight to the cart.
+        {%- endcomment -%}
+        <a
+          href="{{ product.url | default: '#' }}"
+          class="pdp-cmp__btn"
+          data-pdp-cmp-atc
+        >
           {{- section.settings.button_label -}}
         </a>
       </div>
-    {% endif %}
+    {%- endif -%}
   </div>
 </div>
+
 {% stylesheet %}
   .pdp-cmp {
     background: var(--pdp-cream);
   }
+  /* max-width is border-box, so the gutter must be added on top to leave
+     the 1274px table width from the design */
   .pdp-cmp__inner {
-    max-width: 1274px;
+    max-width: var(--pdp-max);
     margin-inline: auto;
-    padding: 0 var(--pdp-gutter) 80px;
+    padding: 61px var(--pdp-gutter) 57px;
   }
   .pdp-cmp__title {
     text-align: center;
     font-size: 64px;
     line-height: 1.2;
-    margin: 0 0 32px;
+    margin: 0;
   }
+  /* The highlighted row bleeds past the card, so leave room inside the scroller */
   .pdp-cmp__scroll {
     overflow-x: auto;
+    padding-inline: 24px;
+    margin-inline: -24px;
   }
   .pdp-cmp__table {
     width: 100%;
     min-width: 900px;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     background: #fff;
     border-radius: 16px;
-    overflow: hidden;
+    font-size: 16px;
   }
   .pdp-cmp__table th {
-    text-align: left;
+    text-align: center;
     font-weight: 700;
-    padding: 16px 20px;
-    font-size: 14px;
+    padding: 18px 24px;
+    line-height: 1.2;
   }
   .pdp-cmp__table td {
-    padding: 18px 20px;
-    font-size: 14px;
-    line-height: 1.45;
-    border-top: 1px solid #eee;
-    vertical-align: top;
+    padding: 24px 34px;
+    line-height: 1.4;
+    vertical-align: middle;
   }
-  .pdp-cmp__sol {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-weight: 700;
+  .pdp-cmp__table td + td {
+    border-left: 1px solid #e5e5e3;
   }
-  .pdp-cmp__table tr.is-highlight td {
-    background: var(--pdp-green-row);
-    color: #fff;
+  .pdp-cmp__table tbody tr + tr td {
+    border-top: 1px solid #e5e5e3;
   }
-  .pdp-cmp__cta {
+  /* Column widths and alignment follow the Figma grid */
+  .pdp-cmp__table :is(th, td):nth-child(1) {
+    width: 12.5%;
+    padding-inline: 12px;
     text-align: center;
-    margin-top: 32px;
   }
-  .pdp-cmp__btn {
-    display: inline-block;
-    background: var(--pdp-btn);
-    color: var(--pdp-text);
+  .pdp-cmp__table :is(th, td):nth-child(2) {
+    width: 28.9%;
+  }
+  .pdp-cmp__table :is(th, td):nth-child(3) {
+    width: 23.1%;
+  }
+  .pdp-cmp__table :is(th, td):nth-child(4) {
+    width: 15.1%;
+    text-align: center;
+  }
+  .pdp-cmp__table :is(th, td):nth-child(5) {
+    width: 20.4%;
+  }
+
+  .pdp-cmp__sol {
     font-weight: 700;
-    padding: 18px 60px;
-    border-radius: 999px;
   }
   .pdp-cmp__sol img {
-    width: 40px;
-    height: 40px;
+    display: block;
+    width: 80px;
+    height: 56px;
+    margin: 0 auto 8px;
     object-fit: contain;
   }
+
+  /* Terra Therapy row: gradient band that overhangs both edges of the card */
+  .pdp-cmp__table tr.is-highlight {
+    background: linear-gradient(90deg, #7a9e66 0%, #a6c08b 26%, #4e7a48 45%, #43703f 100%);
+  }
+  .pdp-cmp__table tr.is-highlight td {
+    color: #fff;
+    font-weight: 700;
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  .pdp-cmp__table tr.is-highlight td:first-child {
+    box-shadow: -23px 0 0 #7a9e66;
+  }
+  .pdp-cmp__table tr.is-highlight td:last-child {
+    box-shadow: 16px 0 0 #43703f;
+  }
+
+  .pdp-cmp__cta {
+    text-align: center;
+    margin-top: 26px;
+  }
+  .pdp-cmp__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 372px;
+    max-width: 100%;
+    height: 67px;
+    background: var(--pdp-btn);
+    color: var(--pdp-text);
+    font-family: var(--font-heading);
+    font-size: 24px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+
   @media (max-width: 749px) {
+    .pdp-cmp__inner {
+      padding-block: 32px 40px;
+    }
     .pdp-cmp__title {
       font-size: 24px;
     }
+    .pdp-cmp__table {
+      min-width: 720px;
+      font-size: 14px;
+    }
+    .pdp-cmp__table td {
+      padding: 16px 18px;
+    }
+    .pdp-cmp__btn {
+      width: 100%;
+      font-size: 20px;
+      height: 63px;
+    }
   }
 {% endstylesheet %}
+
+<script>
+  (function () {
+    // Reuse the buy box's own form so the selected variant, quantity rules and
+    // cart drawer behaviour all match the native Add to cart button.
+    function findAddToCartButton() {
+      var form = document.querySelector('form[data-type="add-to-cart-form"]');
+      return form ? form.querySelector('button[name="add"]') : null;
+    }
+
+    document.querySelectorAll('[data-pdp-cmp-atc]').forEach(function (trigger) {
+      trigger.addEventListener('click', function (event) {
+        var button = findAddToCartButton();
+        // No buy box on the page - let the link through to the product page
+        if (!button) return;
+        event.preventDefault();
+        button.click();
+      });
+    });
+  })();
+</script>
+
 {% schema %}
 {
   "name": "PDP · Comparison",
